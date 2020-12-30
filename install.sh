@@ -20,7 +20,8 @@ source ${HOME}/.bashrc
 GOLAGN_VERSION=`go version`
 
 #安装最新版vim, 包含了nerdTree vim-go 以及xcode颜色 和 golang 配置
-git clone https://github.com/vim/vim ${VIM_SOURCE_DIR} 
+#git clone https://github.com/vim/vim ${VIM_SOURCE_DIR} 
+tar -C /tmp -zvxf ${WORKSPACE}/vim.tar.gz
 cd ${VIM_SOURCE_DIR}
 ./configure --prefix=${VIM_INSTALL_DIR}
 sudo make
