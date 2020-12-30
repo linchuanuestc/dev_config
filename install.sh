@@ -6,6 +6,9 @@ VIM_INSTALL_DIR="/usr/local/vim"
 BIN_DIR="/home/linchuan/.bin"
 HOME="/home/linchuan"
 
+#检查golang是否安装
+GOLAGN_VERSION=`go version`
+
 #创建工作目录
 rm -rf ${VIM_SOURCE_DIR} ${VIM_INSTALL_DIR} 2>/dev/null
 
@@ -27,6 +30,7 @@ cp -r ${WORKSPACE}/.vim ${HOME}
 #安装coc 自动补全
 curl -sL install-node.now.sh | sh
 #注意执行：:CocInstall coc-go
+${BIN_DIR}/vim -c 'GoInstallBinaries'
 ${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
 
 #install tmux2.8;这个版本很稳定
