@@ -22,6 +22,9 @@ alias grep='grep --color'
 alias egrep='egrep --color'
 alias gitdiff='git difftool -y --extcmd=vimdiff'
 
+#path, 自定义的软件安装在这里
+export PATH=/home/linchuan/.bin:$PATH
+
 #golang
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/goworkspace

@@ -1,7 +1,7 @@
 # Install tmux 2.8 on Centos
 
 # install deps
-sudo yum install gcc kernel-devel make ncurses-devel
+yum install gcc kernel-devel make ncurses-devel
 
 # DOWNLOAD SOURCES FOR LIBEVENT AND MAKE AND INSTALL
 
@@ -19,7 +19,7 @@ tar -xf ${LIBEVENTTAR}
 cd libevent-2.1.8-stable
 ./configure --prefix=/usr/local
 make
-sudo make install
+make install
 
 # DOWNLOAD SOURCES FOR TMUX AND MAKE AND INSTALL
 curl -Lk https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz -o ${TMUXSOURCEDIR}/${TMUXTAR}
@@ -30,7 +30,7 @@ rm -rf /usr/local/tmux 2>/dev/null
 mkdir /usr/local/tmux
 LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local/tmux
 make
-sudo make install
+make install
 
 # pkill tmux
 # close your terminal window (flushes cached tmux executable)

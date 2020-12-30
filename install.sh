@@ -1,42 +1,41 @@
 #! /bin/bash
 
-WORKSPACE="/home/linchuan/init"
-SOURCEDIR="${WORKSPACE}/source"
-VIMSOURCEDIR="/tmp/vim"
-VIMINSTALLDIR="/usr/local/vim"
-BINDIR="/usr/local/bin"
+WORKSPACE=$(cd `dirname $0` && pwd -P)
+VIM_SOURCE_DIR="/tmp/vim"
+VIM_INSTALL_DIR="/usr/local/vim"
+BIN_DIR="/home/linchuan/.bin"
 HOME="/home/linchuan"
 
 #创建工作目录
-sudo rm -rf ${WORKSPACE} ${VIMSOURCEDIR} ${VIMINSTALLDIR} 2>/dev/null
-mkdir ${WORKSPACE}
-cd ${WORKSPACE}
-
-# 获取配置源文件
-git clone https://github.com/linchuanuestc/CentOS_Conf.git  ${SOURCEDIR}
-
-#安装最新版vim
-git clone https://github.com/vim/vim ${VIMSOURCEDIR} 
-cd ${VIMSOURCEDIR}
-./configure --prefix=${VIMINSTALLDIR}
-sudo make
-sudo make install
-sudo cp -f ${VIMINSTALLDIR}/bin/vim      ${BINDIR}/vim
-sudo cp -f ${VIMINSTALLDIR}/bin/vimdiff  ${BINDIR}/vimdiff
-rm -rf ${HOME}/.vim 2>/dev/null
-tar -C  ${HOME}  -zxf ${SOURCEDIR}/vim.tar.gz
-cp -f ${SOURCEDIR}/vimrc ${HOME}/.vimrc
+rm -rf ${VIM_SOURCE_DIR} ${VIM_INSTALL_DIR} 2>/dev/null
 
 #bash 替换
-cp -f ${SOURCEDIR}/bash_profile ${HOME}/.bash_profile
-cp -f ${SOURCEDIR}/bashrc ${HOME}/.bashrc
+cp -f ${WORKSPACE}/bash_profile ${HOME}/.bash_profile
+cp -f ${WORKSPACE}/bashrc ${HOME}/.bashrc
+
+#安装最新版vim, 包含了nerdTree vim-go 以及xcode颜色 和 golang 配置
+git clone https://github.com/vim/vim ${VIM_SOURCE_DIR} 
+cd ${VIM_SOURCE_DIR}
+./configure --prefix=${VIM_INSTALL_DIR}
+make
+make install
+cp -f ${VIM_INSTALL_DIR}/bin/vim      ${BIN_DIR}/vim
+cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  ${BIN_DIR}/vimdiff
+rm -rf ${HOME}/.vim 
+cp -r ${WORKSPACE}/.vim ${HOME}
+
+#安装coc 自动补全
+curl -sL install-node.now.sh | sh
+#注意执行：:CocInstall coc-go
+${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
 
 #install tmux2.8;这个版本很稳定
-sudo sh -x ${SOURCEDIR}/tmux_install.sh #安装的是tmux2.8,这个版本很稳定
-cp -f ${SOURCEDIR}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
+sh -x ${WORKSPACE}/tmux_install.sh #安装的是tmux2.8,这个版本很稳定
+cp -f ${WORKSPACE}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
 /usr/local/bin/tmux source-file ${HOME}/.tmux.conf 
 
-
 #cp git-complete
-cp -f ${SOURCEDIR}/git-completion.bash ${HOME}/.git-completion.bash 
+cp -f ${WORKSPACE}/git-completion.bash ${HOME}/.git-completion.bash 
 
+#执行bash
+source ${HOME}/.bashrc
