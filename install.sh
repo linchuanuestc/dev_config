@@ -7,7 +7,7 @@ BIN_DIR="/home/linchuan/.bin"
 export HOME="/home/linchuan"
 
 #创建工作目录
-rm -rf ${VIM_SOURCE_DIR} ${VIM_INSTALL_DIR} 2>/dev/null
+sudo rm -rf ${VIM_SOURCE_DIR} ${VIM_INSTALL_DIR} 2>/dev/null
 
 #bash 替换
 cp -f ${WORKSPACE}/bash_profile ${HOME}/.bash_profile
@@ -29,7 +29,7 @@ cp -f ${VIM_INSTALL_DIR}/bin/vim      ${BIN_DIR}/vim
 cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  ${BIN_DIR}/vimdiff
 sudo cp -f ${VIM_INSTALL_DIR}/bin/vim      /usr/bin/vim
 sudo cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  /usr/bin/vimdiff
-rm -rf ${HOME}/.vim 
+sudo rm -rf ${HOME}/.vim 
 cp -r ${WORKSPACE}/.vim ${HOME}
 
 #安装coc 自动补全
