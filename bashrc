@@ -31,6 +31,7 @@ export GOPATH=$HOME/goworkspace
 export PATH=$PATH:$GOPATH/bin
 export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
+export GOPROXY="http://goproxy.intra.xiaojukeji.com,https://goproxy.cn,https://goproxy.io,direct"
 export PATH=/home/linchuan/.rpc-tools:$PATH
  
 # history
