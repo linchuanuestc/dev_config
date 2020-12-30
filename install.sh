@@ -27,6 +27,8 @@ sudo make
 sudo make install
 cp -f ${VIM_INSTALL_DIR}/bin/vim      ${BIN_DIR}/vim
 cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  ${BIN_DIR}/vimdiff
+cp -f ${VIM_INSTALL_DIR}/bin/vim      /usr/bin/vim
+cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  /usr/bin/vimdiff
 rm -rf ${HOME}/.vim 
 cp -r ${WORKSPACE}/.vim ${HOME}
 
