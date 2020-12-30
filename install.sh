@@ -16,6 +16,9 @@ rm -rf ${VIM_SOURCE_DIR} ${VIM_INSTALL_DIR} 2>/dev/null
 cp -f ${WORKSPACE}/bash_profile ${HOME}/.bash_profile
 cp -f ${WORKSPACE}/bashrc ${HOME}/.bashrc
 
+#执行bash
+source ${HOME}/.bashrc
+
 #安装最新版vim, 包含了nerdTree vim-go 以及xcode颜色 和 golang 配置
 git clone https://github.com/vim/vim ${VIM_SOURCE_DIR} 
 cd ${VIM_SOURCE_DIR}
@@ -40,6 +43,3 @@ cp -f ${WORKSPACE}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
 
 #cp git-complete
 cp -f ${WORKSPACE}/git-completion.bash ${HOME}/.git-completion.bash 
-
-#执行bash
-source ${HOME}/.bashrc
