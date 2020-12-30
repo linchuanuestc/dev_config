@@ -27,13 +27,13 @@ sudo make
 sudo make install
 cp -f ${VIM_INSTALL_DIR}/bin/vim      ${BIN_DIR}/vim
 cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  ${BIN_DIR}/vimdiff
-cp -f ${VIM_INSTALL_DIR}/bin/vim      /usr/bin/vim
-cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  /usr/bin/vimdiff
+sudo cp -f ${VIM_INSTALL_DIR}/bin/vim      /usr/bin/vim
+sudo cp -f ${VIM_INSTALL_DIR}/bin/vimdiff  /usr/bin/vimdiff
 rm -rf ${HOME}/.vim 
 cp -r ${WORKSPACE}/.vim ${HOME}
 
 #安装coc 自动补全
-curl -sL install-node.now.sh | sh
+curl --fail -LSs https://install-node.now.sh/latest | sudo sh
 #注意执行：:CocInstall coc-go
 ${BIN_DIR}/vim -c 'GoInstallBinaries'
 ${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
