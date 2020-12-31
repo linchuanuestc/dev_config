@@ -1,3 +1,6 @@
+WORKSPACE=$(cd `dirname $0` && pwd -P)
+export HOME="/home/linchuan"
+
 #install tmux3.1.b 这个版本可以控制颜色, https://github.com/tmux/tmux/wiki/Installing, 不推荐使用源码安装
 #重试三次
 n=0
@@ -18,3 +21,4 @@ do
    sleep 3 
 done
 
+cp -f ${WORKSPACE}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
