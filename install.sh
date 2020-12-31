@@ -16,6 +16,9 @@ cp -f ${WORKSPACE}/bashrc ${HOME}/.bashrc
 #执行bash
 source ${HOME}/.bashrc
 
+#cp git-complete
+cp -f ${WORKSPACE}/git-completion.bash ${HOME}/.git-completion.bash 
+
 #检查golang是否安装
 GOLAGN_VERSION=`go version`
 
@@ -39,10 +42,5 @@ sudo sh ${WORKSPACE}/node_install.sh
 ${BIN_DIR}/vim -c 'GoInstallBinaries'
 ${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
 
-#install tmux2.8;这个版本很稳定
 sh -x ${WORKSPACE}/tmux_install.sh #安装的是tmux2.8,这个版本很稳定
 cp -f ${WORKSPACE}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
-/usr/local/bin/tmux source-file ${HOME}/.tmux.conf  2>/dev/null
-
-#cp git-complete
-cp -f ${WORKSPACE}/git-completion.bash ${HOME}/.git-completion.bash 
