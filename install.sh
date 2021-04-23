@@ -43,5 +43,5 @@ sudo curl -sL install-node.now.sh/lts | sudo bash
 ${BIN_DIR}/vim -c 'GoInstallBinaries'
 ${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
 
-sh -x ${WORKSPACE}/tmux_install.sh #安装的是tmux2.8,这个版本很稳定
+sh -x ${WORKSPACE}/tmux_install.sh #安装3.1b-2.el7版本，无颜色bug，3.2有问题
 cp -f ${WORKSPACE}/tmux.conf ${HOME}/.tmux.conf #创建tmux 配置文件
