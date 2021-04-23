@@ -37,7 +37,8 @@ sudo rm -rf ${HOME}/.vim
 cp -r ${WORKSPACE}/.vim ${HOME}
 
 #安装coc 自动补全
-sudo sh ${WORKSPACE}/node_install.sh
+#sudo sh ${WORKSPACE}/node_install.sh
+sudo curl -sL install-node.now.sh/lts | sudo bash
 #注意执行：:CocInstall coc-go
 ${BIN_DIR}/vim -c 'GoInstallBinaries'
 ${BIN_DIR}/vim -c 'CocInstall -sync coc-go coc-json'
