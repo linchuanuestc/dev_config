@@ -1,0 +1,56 @@
+" Basic configure
+filetype plugin on
+syntax on
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Encoding
+set fileencoding=utf-8
+set termencoding=utf-8
+set encoding=utf-8
+
+" Cursor
+set foldmethod=marker
+set cursorline
+set number
+
+" Search
+set ic
+set hlsearch
+
+" Indent
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set autoindent
+filetype plugin indent on
+
+" vim diff
+if &diff
+    colorscheme evening
+endif
+
+" Color
+set termguicolors
+"colorscheme sonokai "主题
+set background=dark
+colorscheme xcodewwdc
+
+" Code jump
+"let mapleader = ","
+"nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-]> :YcmCompleter GoToDefinition<CR>
+
+" NerdTree
+source ~/.vim/conf/nerdTree.vimrc
+
+" Auto completion
+"source ~/.vim/conf/coc.nvim.vimrc
+
+" Golang
+source ~/.vim/conf/golang.vimrc

@@ -6,6 +6,10 @@
 - cp bash_profile ../.bash_profile
 - cp bashrc ../.bashrc
 
+# install centos 8 develop env
+- dnf group install -y "Development Tools"
+- sudo yum install -y ncurses-devel.x86_64
+
 ## centos 环境部署
 下载vim8 https://github.com/vim/vim
 源码安装
